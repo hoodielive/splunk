@@ -185,19 +185,19 @@ How splunk processes data:
 1. Data - any kind of 'raw' data.
 2. Process - transforms incoming data into 'events'.
 	 Like adding fields:
-	 	host, source, sourcetype
-		Character set encoding
-		Line breaks
-		Timestamps
-		Metadata
+	 	- host, source, sourcetype
+		- Character set encoding
+		- Line breaks
+		- Timestamps
+		- Metadata
 3. Index - indexes are stored in buckets.
-	 $SPLUNK_HOME/var/lib/splunk/*
-	 main,_internal,_audit
-	 main: indexes go here.
-	 \_internal: internal logs and metrics
+	 - $SPLUNK_HOME/var/lib/splunk/*
+	 - main,_internal,_audit
+	 - main: indexes go here.
+	 - \_internal: internal logs and metrics
 4. Bucket - directories on the file system organized by age.
-	 Hot (hotPath)
-	 Warm (warmPath)
-	 Cold (coldPath)
-	 Frozen (frozenPath)
-	 Thawed (thawedPath)
+	 - Hot (hotPath)
+	 - Warm (warmPath)
+	 - Cold (coldPath)
+	 - Frozen (frozenPath)
+	 - Thawed (thawedPath)
