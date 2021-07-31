@@ -20,7 +20,7 @@ Identifying Splunk Component:
 4. Cluster Master
 5. Deployer
 
-# Splunk Licensing
+### Splunk Licensing
 1. You license data ingested per day, not data stored.
 2. Daily indexing volume is measured from midnight to midnight by the clock on the license master.
 
@@ -65,5 +65,8 @@ Distributed Licensing
 - Whereas Enterprise Trial, Free and Forwarders cannot.
 - When we purchase licenses we receive a license file from the representative and we install them on the license manager.
 
-Splunk Configuration Files
-
+### Splunk Configuration Files
+- Describe Splunk configuration directory structure.
+- Understand configuration layering.
+- Understand configuration precedence.
+- Use btool to examine configuration settings.
