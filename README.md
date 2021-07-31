@@ -244,3 +244,59 @@ enableDataIntegrityControl=true
 ```bash
 ./splunk generate-hash-files -bucketPath [ bucket path ] [ verbose ]
 ```
+
+### index.conf Options:
+Can be configured with:
+1. Global.
+	- Defined either at the beginning of a file or in the [default] stanza.
+	- Each index.conf file has only one [default] stanza.
+2. Per index.
+	- Options under an [<index>] stanza.
+	- A few of the many options:
+		1. Set bucket paths.
+		2. Set database sizes.
+		3. Specify event or metric data types.
+3. Per provider family.
+	- Options for External Resource Providers (ERPs).
+	- For example: Hadoop.
+	- All provider stanzas begin with [provider: ].
+4. Per provider.
+	- Properties that are common to multiple providers.
+	- All properties that cna be used in a family can be used in a provider.
+	- Stanzas for provider families being with [provider-family: ].
+	- For example: Hadoop, Spark, Hive.
+5. Per virtual index.
+	- Common for Hadoop family.
+	- Let's Splunk access data stored in external systems and push computations to those systems.
+
+### The Fish Bucket
+This guys keeps track of which files and which parts of files have already been indexed.
+- Used for deduplication.
+- Contains seek pointers and crcs.
+
+Exercise:
+1. Create an index.
+- Go to settings and click index.
+- Click new index - top right corner.
+- Configure and save.
+2. Apply a data retention policy.
+```bash
+nvim /opt/splunk/etc/system/local/indexes.conf
+
+[history]
+frozentimePeriodInSecs = 604800 (7 days)
+
+[_internal]
+frozentimePeriodInSecs = 2592000 (30 days)
+
+[_thefishbucket]
+frozentimePeriodInSecs = 4419200 (almost 28 days)
+
+# Altering these periods make the retention levels go up or down respectively.
+```
+3. Explore buckets in the file system.
+- /opt/splunk/var/lib/splunk/defaultdb/db
+4. Check hashes to validate data.
+```bash
+./splunk check-integrity -bucketPath /var/lib/splunk/defaultdb/db/ -verbose
+```
