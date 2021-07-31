@@ -70,3 +70,14 @@ Distributed Licensing
 - Understand configuration layering.
 - Understand configuration precedence.
 - Use btool to examine configuration settings.
+
+Configuration Files
+- Splunk runs on configuration (.conf) files.
+	Every behavior and function within Splunk is defined in a .conf file.
+- You may have multiple copies of the same configuration file. They are evaluated by Splunk based on precedence.
+
+3 Common Configuration Files in Splunk:
+1. inputs.conf - governs data input such as forwarders and file system monitoring. Host values of the data coming in. Define or specify which iindexers should store events.
+2. props.conf - governs indexing property behavior. For example, timestamp recognition, anonymizing sensitive data, definining basic search time field extractions.
+3. transform.conf - settings and values tat govern data transformation. Supports regex.
+Note: Splunks documentation is excellent and does a great job of explanining the purpose of its various configuration files. See: https://docs.splunk.com/Documentation/Splunk/latest/Admin/Listofconfigurationfiles
