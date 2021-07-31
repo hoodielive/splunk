@@ -81,3 +81,24 @@ Configuration Files
 2. props.conf - governs indexing property behavior. For example, timestamp recognition, anonymizing sensitive data, definining basic search time field extractions.
 3. transform.conf - settings and values tat govern data transformation. Supports regex.
 Note: Splunks documentation is excellent and does a great job of explanining the purpose of its various configuration files. See: https://docs.splunk.com/Documentation/Splunk/latest/Admin/Listofconfigurationfiles
+
+To understand how configuration files work, we must first understand their place in the Splunk filesystem:
+
+- Splunk utilizes the same file structure as Windows, Linux and Mac.
+- /opt/splunk
+- /opt/splunk/bin - containers splunk binaries to execute commands like start|stop|restart.
+- /opt/splunk/var/lib - contains information relative to splunk indexes, import splunk system stuff.
+- /opt/splunk/etc - contains 3 paths:
+	1. System (contains a default and local directory).
+	2. Apps (contains search, launcher, and others apps. Search has a default, local and metadata directory structure).
+	3. User (contains users).
+
+Note: Defaults ( are unaltered files whereas local is user-defined and thus altered files ). Further, System (Global context), Apps (App context) and Users (User context).
+
+Note: Never mess around with default files. Make all your custom configuration in the local directories respectively.
+
+Understanding Layering and Precedence
+- Configuration files have precedence based on Splunk internal logic.
+
+Configuration File Context 
+
