@@ -159,3 +159,45 @@ Use btool to:
 2. Investigate configuration values in a single app.
 3. Learn the source of configuration values.
 4. Check for typos in stanza setting names.
+
+
+### Indexes
+
+Describe Index Structure:
+1. Repository of Splunk events (a place to put the data).
+2. Built-in or custom.
+3. Indexes contain 3 types of data:
+	 1. Raw data in compressed form.
+	 2. Indexes that point to raw data.
+	 3. Metadata :: data that describes data: timestamp, host value or sourcetype value.
+
+There are 2 main types of indexes in Splunk:
+1. Event
+	- the default type of index.
+	- can handle any type of data.
+2. Metrics
+  - Optimized to store and retrieves metric data.
+	- Timestamps, Metric name, Values and Dimensions.
+	- It is structured kind of like DNS hiearchy.
+	- Data Warehousing.
+
+How splunk processes data:
+1. Data -> any kind of 'raw' data.
+2. Process -> transforms incoming data into 'events'.
+	 Like adding fields:
+	 	host, source, sourcetype
+		Character set encoding
+		Line breaks
+		Timestamps
+		Metadata
+3. Index -> indexes are stored in buckets.
+	 $SPLUNK_HOME/var/lib/splunk/*
+	 main,_internal,_audit
+	 main: indexes go here.
+	 \_internal: internal logs and metrics
+4. Bucket -> directories on the file system organized by age.
+	 Hot (hotPath)
+	 Warm (warmPath)
+	 Cold (coldPath)
+	 Frozen (frozenPath)
+	 Thawed (thawedPath)
