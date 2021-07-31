@@ -100,5 +100,32 @@ Note: Never mess around with default files. Make all your custom configuration i
 Understanding Layering and Precedence
 - Configuration files have precedence based on Splunk internal logic.
 
-Configuration File Context 
+Configuration File Context
+- Global
+- App|User specific
 
+In the Global context:
+
+	System local directory
+		App Local directories
+			App default directories
+			 System default directory
+
+In the App|User context:
+
+	User directories for current user
+		App directories for currently running app (local, followed by default)
+			App directories for all other apps (local, followed by default)
+				System directories (local, follwed by default)
+
+What's inside the configuration files? 
+1. Stanzas 
+2. Attribute  = value pairs 
+
+For example:
+app.conf:
+
+[id]
+group = <group-name>
+name = <app-name>
+version = <version-number>
