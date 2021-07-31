@@ -118,9 +118,9 @@ In the App|User context:
 			App directories for all other apps (local, followed by default)
 				System directories (local, follwed by default)
 
-What's inside the configuration files? 
-1. Stanzas 
-2. Attribute  = value pairs 
+What's inside the configuration files?
+1. Stanzas
+2. Attribute  = value pairs
 
 For example:
 app.conf:
@@ -131,3 +131,18 @@ group = <group-name>
 name = <app-name>
 version = <version-number>
 ```
+
+### btool
+Use btool to examine configuration settings. Namely, merged configurations (from various file contexts) and troubleshooting.
+
+```bash
+# $Splunk_HOME/bin
+# ./splunk cmd btool <configuration file prefix> list
+./splunk cmd btool transforms list
+```
+
+Use btool to:
+1. Investigate global configuration values.
+2. Investigate configuration values in a single app.
+3. Learn the source of configuration values.
+4. Check for typos in stanza setting names.
