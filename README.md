@@ -137,8 +137,21 @@ Use btool to examine configuration settings. Namely, merged configurations (from
 
 ```bash
 # $Splunk_HOME/bin
+
 # ./splunk cmd btool <configuration file prefix> list
-./splunk cmd btool transforms list
+
+./splunk cmd btool transforms list # this shows transforms list 'globally'
+
+
+# Show specific settings apps are using.
+# ./splunk cmd btool --app=app_name <conf file prefix> list
+
+./splunk cmd btool --app=search transforms list
+./splunk cmd btool transforms list --debug
+
+# Check for typos in stanzas and settings.
+./splunk cmd btool check
+
 ```
 
 Use btool to:
