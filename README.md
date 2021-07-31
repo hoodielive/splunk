@@ -1,4 +1,4 @@
-# splunk
+# Splunk
 Regex|Splunk
 
 Identifying Splunk Component:
