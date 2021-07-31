@@ -214,7 +214,7 @@ Note: There are 6 buckets in a fishbucket.
 
 Buckets:
 
-```bash 
+```bash
 Hot (hotPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/db/*
 Warm (warmPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/db/*
 Cold (coldPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/colddb/*
@@ -229,8 +229,18 @@ Splunk's double hash.
 	Computes another hash on the same data when it moves buckets.
 	Stores both has files in the /rawdata directory.
 
-source>
- index(level 1 hash)> 
- 	Hot Path (level 2 hash)> 
-		Warm Path
+source> index(level 1 hash)> Hot Path (level 2 hash)> Warm Path.
 
+Command Line Options
+1. Check hashes to validate data.
+```bash
+./splunk check-integrity -bucketPath [ bucket path ] [ -verbose ]
+```
+2. Configure data integrity control.
+```bash
+enableDataIntegrityControl=true
+```
+```bash
+./splunk generate-hash-files -bucketPath [ bucket path ] [ verbose ]
+```
+3. Regenerate hashes.
