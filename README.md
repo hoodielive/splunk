@@ -300,3 +300,82 @@ frozentimePeriodInSecs = 4419200 (almost 28 days)
 ```bash
 ./splunk check-integrity -bucketPath /var/lib/splunk/defaultdb/db/ -verbose
 ```
+
+### User management
+Splunk is a role (collection of user capabilities).
+- Users are not assigned to individual capabilites.
+- Splunk has 4 default roles:
+  1. admin
+	2. poweruser
+	3. user
+	4. can_delete
+
+Capabilities
+1. Assigned to roles.
+2. Additive in nature.
+3. Can be used to granularly manage users in Splunk.
+4. Can be added or removed in Splunk web, or in authorize.conf
+
+### Splunk Authenticaton Management
+
+LDAP quick review:
+1. Defines a protocol to authenticate to, access, and update objects in an X.500 style directory.
+2. DN = Distinguished Name, an entry's unique identifier usually composed of multiple attributes.
+3. CN = Common | canonical Name.
+4. OU = Organizational Unit.
+5. DC = Domain component.
+6. SN = Surname.
+
+```bash
+# attributes
+dn: cn=Jon Doe,dc=rhce,dc=lab
+cn: Jon Doe
+sn: Doe
+```
+
+In order for Splunk to communicate and authenticate with LDAP, its need to send a 'BIND' packet and this ldap bind allows the client to authenticate to a X.500 directory server and verify identity of users as well as map users and groups from ldap to splunk users and roles.
+
+Options?
+1. Splunk web.
+	1. Create an LDAP strategy.
+	2. Map LDAP groups to Splunk roles.
+	3. Specify the connection order.
+2. Edit authentication.conf file directly.
+
+LDAP connection settings:
+- Host
+		1. IP address.
+		2. fqdn.
+- Port
+		1. Port 389 or 636
+- Bind DN
+		1. Bind LDAP service to Splunk. Use a _svc_ acct for this.
+
+User settings:
+1. User base DN
+2. User base filter
+3. User name attribute
+4. Real name attribute
+5. Email attribute
+6. Group mapping attribute
+
+Group Settings:
+1. Group base DN
+2. Static group search filter
+3. Group name attribute
+4. Static member attribute
+
+Dynamic Group:
+1. Dynamic member attribute
+2. Dynamic group search filter
+
+
+MFA
+Scripted Authentication API (SAML)
+DUO and RSA
+
+ADDS
+- Server Name.
+- Go to tools and ADDS.
+- Explore OUs.
+- fqdn.
