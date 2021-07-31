@@ -183,7 +183,8 @@ There are 2 main types of indexes in Splunk:
 
 How splunk processes data:
 1. Data - any kind of 'raw' data.
-2. Process - transforms incoming data into 'events'. It adds the following fields. 
+2. Process - transforms incoming data into 'events'. 
+   It adds the following fields. 
 	 	- host, source, sourcetype
 		- Character set encoding
 		- Line breaks
