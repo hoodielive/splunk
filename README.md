@@ -125,7 +125,9 @@ What's inside the configuration files?
 For example:
 app.conf:
 
+```bash
 [id]
 group = <group-name>
 name = <app-name>
 version = <version-number>
+```
