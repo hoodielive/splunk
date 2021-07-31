@@ -214,12 +214,13 @@ Note: There are 6 buckets in a fishbucket.
 
 Buckets:
 
+```bash 
 Hot (hotPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/db/*
 Warm (warmPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/db/*
 Cold (coldPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/colddb/*
 Frozen (frozePath): Location that you specify.
 Thawed (thawedPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/thaweddb/*
-
+```
 
 # Check Data Integrity
 
