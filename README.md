@@ -183,7 +183,7 @@ There are 2 main types of indexes in Splunk:
 
 How splunk processes data:
 1. Data - any kind of 'raw' data.
-2. Process - transforms incoming data into 'events'. 
+2. Process - transforms incoming data into 'events'.
 	 	- host, source, sourcetype
 		- Character set encoding
 		- Line breaks
@@ -200,3 +200,14 @@ How splunk processes data:
 	 - Cold (coldPath)
 	 - Frozen (frozenPath)
 	 - Thawed (thawedPath)
+
+Note: There are 6 buckets in a fishbucket.
+
+- Newly indexed data goes to the hotPath.
+- An index has 1 or more hot buckets.
+- Then it moves to warm bucket because it has no active writes to it.
+- An index will have 1 or more warm buckets.
+- The coldPath is in a different location of the file structure because it is data that is rarely accessed.
+- An index has many cold buckets.
+- Frozen is rolled from cold and deleted by default but you can override this default and archive them.
+- If you restore any of the archived data it goes to the thawed path.
