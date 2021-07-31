@@ -211,3 +211,25 @@ Note: There are 6 buckets in a fishbucket.
 - An index has many cold buckets.
 - Frozen is rolled from cold and deleted by default but you can override this default and archive them.
 - If you restore any of the archived data it goes to the thawed path.
+
+Buckets:
+
+Hot (hotPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/db/*
+Warm (warmPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/db/*
+Cold (coldPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/colddb/*
+Frozen (frozePath): Location that you specify.
+Thawed (thawedPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/thaweddb/*
+
+
+# Check Data Integrity
+
+Splunk's double hash.
+	Computes a hash on a newly indexed data set.
+	Computes another hash on the same data when it moves buckets.
+	Stores both has files in the /rawdata directory.
+
+source>
+ index(level 1 hash)> 
+ 	Hot Path (level 2 hash)> 
+		Warm Path
+
