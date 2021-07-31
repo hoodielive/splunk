@@ -240,7 +240,7 @@ Command Line Options
 ```bash
 enableDataIntegrityControl=true
 ```
+3. Regenerate hashes.
 ```bash
 ./splunk generate-hash-files -bucketPath [ bucket path ] [ verbose ]
 ```
-3. Regenerate hashes.
