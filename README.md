@@ -505,12 +505,56 @@ CLI commands
 
 Configuring the Deployer:
 1. Set security key
-2. Label the cluster 
+2. Label the cluster
 
-Edit servers.conf in $SPLUNK_HOME/opt/etc/system/local 
-Add stanzas 
+Edit servers.conf in $SPLUNK_HOME/opt/etc/system/local
+Add stanzas
 ```bash
 [shclustering]
 pass4SymmKey = <security key>
 shcluster_label = <name your cluster>
 ```
+
+### Staging
+
+3 Phases of the Splunk Indexing Process:
+1. Data Input - Forwarding, monitoring, network, scripted.
+2. Parsing - Breaks the data stream into individual events.
+3. Indexing - Writes the parsed data into index buckets.
+
+Input Options:
+1. Source to Splunk
+	- Files and Directories
+	- Network Events
+	- Windows Sources
+	- Other Data Sources
+
+### Configuring Forwarders
+1. Configure receiving on an indexer or cluster.
+2. Download and install the universal forwarder.
+3. Start the universal forwarder and accept the license agreement.
+4. Configure the universal forwarder to send data.
+5. Configure the unversal forwarder to collect data fro mthe host it is on.
+
+4 Ways to configure:
+1. Gui (windows)
+2. CLI
+3. Configuration Files
+4. Deployment Server
+
+### Configuring Heavy Forwarders
+1. Basic configuration:
+   1. Install Splunk Enterprise.
+	 2. Apply a forwarder license.
+	 3. Set up forwarding:
+	 		1. Settings > Forwarding and Receiving.
+			2. Add New > Configure Forwarding.
+			3. Edit outputs.conf directly.
+2. Advanced Configuration:
+	 1. Heavy forwarders can index data before they forward it.
+	 2. Through Splunk web:
+	    1. Settings > Forwarding and Receiving.
+			2. Check the box > Store local copy.
+
+Additional Forwarder Options:
+1. Load-Balancing (distributes data over multiple instances) but this requires you configuring distributed searching.
