@@ -563,8 +563,8 @@ Input Options:
 2. Advanced Configuration:
 	 1. Heavy forwarders can index data before they forward it.
 	 2. Through Splunk web:
-	    1. Settings and Forwarding and Receiving.
-			2. Check the box  and Store local copy.
+	    1. Settings> Forwarding and Receiving.
+			2. Check the box> Store local copy.
 
 Additional Forwarder Options:
 1. Load-Balancing (distributes data over multiple instances) but this requires you configuring distributed searching.
