@@ -1,4 +1,5 @@
 # Splunk
+
 Regex|Splunk
 
 Identifying Splunk Component:
@@ -8,12 +9,13 @@ Identifying Splunk Component:
 3. Runs searches on indexed data.
 
 
-## Processing
+### Processing
 1. Search Head
 2. Indexer
 3. Forwarder
 
-## Management
+### Management
+
 1. Monitoring Console
 2. Deployment Server
 3. License Server/Master
@@ -21,6 +23,7 @@ Identifying Splunk Component:
 5. Deployer
 
 ### Splunk Licensing
+
 1. You license data ingested per day, not data stored.
 2. Daily indexing volume is measured from midnight to midnight by the clock on the license master.
 
@@ -66,6 +69,7 @@ Distributed Licensing
 - When we purchase licenses we receive a license file from the representative and we install them on the license manager.
 
 ### Splunk Configuration Files
+
 - Describe Splunk configuration directory structure.
 - Understand configuration layering.
 - Understand configuration precedence.
@@ -133,6 +137,7 @@ version = <version-number>
 ```
 
 ### btool
+
 Use btool to examine configuration settings. Namely, merged configurations (from various file contexts) and troubleshooting.
 
 ```bash
@@ -222,7 +227,7 @@ Frozen (frozePath): Location that you specify.
 Thawed (thawedPath): $SPLUNK_HOME/var/lib/splunk/defaultdb/thaweddb/*
 ```
 
-# Check Data Integrity
+### Check Data Integrity
 
 Splunk's double hash.
 	Computes a hash on a newly indexed data set.
@@ -246,6 +251,7 @@ enableDataIntegrityControl=true
 ```
 
 ### index.conf Options:
+
 Can be configured with:
 1. Global.
 	- Defined either at the beginning of a file or in the [default] stanza.
@@ -270,6 +276,7 @@ Can be configured with:
 	- Let's Splunk access data stored in external systems and push computations to those systems.
 
 ### The Fish Bucket
+
 This guys keeps track of which files and which parts of files have already been indexed.
 - Used for deduplication.
 - Contains seek pointers and crcs.
@@ -302,6 +309,7 @@ frozentimePeriodInSecs = 4419200 (almost 28 days)
 ```
 
 ### User management
+
 Splunk is a role (collection of user capabilities).
 - Users are not assigned to individual capabilites.
 - Splunk has 4 default roles:
@@ -530,6 +538,7 @@ Input Options:
 	- Other Data Sources
 
 ### Configuring Forwarders
+
 1. Configure receiving on an indexer or cluster.
 2. Download and install the universal forwarder.
 3. Start the universal forwarder and accept the license agreement.
@@ -543,8 +552,9 @@ Input Options:
 4. Deployment Server
 
 ### Configuring Heavy Forwarders
+
 1. Basic configuration:
-   1. Install Splunk Enterprise.
+   1. Install Splunk Enterprise. \
 	 2. Apply a forwarder license.
 	 3. Set up forwarding:
 	 		1. Settings > Forwarding and Receiving.
