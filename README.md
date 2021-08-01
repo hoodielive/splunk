@@ -379,3 +379,138 @@ ADDS
 - Go to tools and ADDS.
 - Explore OUs.
 - fqdn.
+
+### Getting Data Into Splunk (Pipelining)
+
+1. Inputs
+2. Parsing
+3. Indexing
+4. Search
+
+### General Input Categories
+
+	- File and directory inputs
+		- Monitor files and directories.
+		- Locally and remotely.
+		- Monitor compressed files.
+	- Upload
+		- Upload files to Splunk.
+		- Used for one-time analysis.
+	- MonitorNoHandle
+		- Available for Windows hosts only.
+		- Monitors files and directories that the system rotates automatically.
+
+### Network Inputs
+
+	- Data from TCP and UDP.
+	- syslog
+	- Data from SNMP events.
+
+### Windows inputs
+
+	- Windows event logs.
+	- Registry.
+	- Active Directory.
+	- WMI.
+	- Performance monitoring (perfmon).
+
+### Other Data sources
+
+	- Metrics
+	- FIFO queues Scripted inputs (API(s), Message queues)
+	- Modular inputs (build functionality for ingesting sensitive data/security oriented)
+	- HTTP event collector (web related content)
+
+### Basic Settings for Inputs: (Ways to configure)
+
+1. Through an app.
+	 - Many apps have preconfigured inputs.
+2. Splunk web.
+ 	 - Settings> data inputs.
+	 - Settings> add data.
+3. CLI
+	 - For example: ./splunk add monitor <path>.
+4. Through inputs.conf
+	 - Add a stanza for each input.
+5. Guided Data Onboarding (GDO)
+	 - This is a data input wizard.
+	 - Somewhat new for Splunk.
+
+### Types of Forwarders
+
+1. Universal (replaced the light forwarder).
+	 - Collects data from a data source and forwards it to a receiver.
+	 - This is its only job.
+	 - The source 'could' be another 'forwarder' and so could the receiver.
+	 - Most usual cases is that we are usually forwarding to an indexer or a splunk searchhead.
+	 - Installed separately.
+	 - It is NOT a Splunk Enterprise instance.
+	 - It has NO license.
+	 - It does not 'search' indexes nor does it parse any data.
+	 - It simply takes the data and forwards the data.
+2. Heavy
+	 - Advanced type of forwarder.
+	 - Full installation of Splunk Enterprise and you apply a forwarder 'license' to it.
+	 - It parses data and can also route data on criteria such as source.
+	 - Use cases: db data to a specific indexer and then you want to route all web data to another indexer.
+	 - Can index data locally.
+
+### Configure Universal forwarder.
+
+1. Configure receiving on a Splunk Enterprise instance.
+2. Download and install the UF on the source system.
+3. Start service.
+4. Configure it to send data.
+5. Configure it to collect data from the host system.
+
+
+### Distributed Search
+
+Distributed search provides a way to scale your deployment by separating the search management and presentation layer from the indexing and search retrieval layer.
+
+- There are two necessary components for distributed searching:
+  1. Search heads.
+	2. Indexers, also called search peers.
+
+Types:
+- Horizontal scaling
+		- expand environment by adding search heads to increase performance.
+- Access control
+		- control access to indexed data through access control.
+- Geo-dispersed data
+		- content derived from geographical locations.
+
+Configuration of Distributed Search
+
+Machines:
+- Virtual, physical or cloud machines.
+- Splunk Enteprise installed on all machines.
+
+Network:
+- All machines must be able to communicate with each other.
+- All machines need to have a FQDN - use Static IP addresses.
+- DNS server or manual hostname/hosts entries.
+- Firewalls configured properly.
+- Minimum of one deployer and 3 cluster members.
+
+CLI commands
+- In order to add.
+
+1. Requirements
+2. Deployer
+3. Splunk Installation
+4. Initialization
+5. Captain
+6. Post Deployment
+
+Configuring the Deployer:
+1. Set security key
+2. Label the cluster 
+
+Edit servers.conf in $SPLUNK_HOME/opt/etc/system/local 
+Add stanzas 
+```bash
+[shclustering]
+pass4SymmKey = <security key>
+shcluster_label = <name your cluster>
+```
