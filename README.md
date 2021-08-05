@@ -558,3 +558,21 @@ Input Options:
 
 Additional Forwarder Options:
 1. Load-Balancing (distributes data over multiple instances) but this requires you configuring distributed searching.
+
+
+### SPL Queries
+1. Will have key-value pairs.
+   - index=main
+   - sourcetype=access_combined_wcookie
+   - status !=200
+2. Literal Strings.
+3. Commands.
+6. Comparison Operators.
+4. Functions and Options.
+5. Logical Operators (Booleans).
+6. Comparison Operators.
+7. Clauses (grouping by fields). Or As to rename a field.
+8. The Search Pipeline (Pipe).
+Note: Output of the left side of pipe becomes the input to the right side of the pipe.
+
+### Searches
